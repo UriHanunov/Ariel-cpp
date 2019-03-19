@@ -19,11 +19,11 @@ Memory=$?
 valgrind --tool=helgrind --error-exitcode=3 -q ./$2 &> temp.txt
 Threads=$?
 if [[$Memory -gt 0]]; then
-	exitCode=2
+	$exitCode=2
 	$MEMO=FAIL
 fi
 if[[$Threads -gt 0]]; then
-	exitCode=$exitCode+1
+	$exitCode=$exitCode+1
 	$THRED=FAIL
 fi
 
