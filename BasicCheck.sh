@@ -7,6 +7,7 @@ cd $foldername
 make
 secssesfillMake=$?
 if [[ secssesfillMake -gt 0 ]]; then
+	echo    BasicCheck.sh    <$foldername> <$executeble>
 	echo  	Compilation     Memory leaks      thread race
 	echo	FAIL            FAIL              FAIL
 	exit 7
@@ -31,7 +32,7 @@ else
 	THRED=PASS
 fi
 
-
+echo    BasicCheck.sh    <$foldername> <$executeble>
 echo  	Compilation      Memory leaks    thread race
 echo	PASS             $MEMO            $THRED
 exit $exitCode
