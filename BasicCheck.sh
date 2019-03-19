@@ -2,8 +2,6 @@
 foldername=$1
 executeble=$2
 exitCode=0
-MEMO
-THRED
 
 cd $foldername
 make
@@ -25,7 +23,7 @@ if [[ Memory -gt 0 ]]; then
 fi
 
 if [[ Threads -gt 0 ]]; then
-	exitCode=($exitCode+1)
+	exitCode=($exitCode + 1)
 	THRED=FAIL
 fi
 
