@@ -11,9 +11,9 @@ echo  Compilation     Memory leaks      thread race
          FAIL            FAIL              FAIL
 exit 7
 fi
-valgrind --leak-check=full --error-exitcode=1 ./$executeble &> temp.txt
+valgrind --tool=memcheck --leak-check=full --error-exitcode=3 -q ./$executeble >  /dev/null 2>&1
 Memory=$?
-valgrind --tool=helgrind --error-exitcode=1 ./$executeble &> temp.txt
+valgrind --tool=helgrind --error-exitcode=3 -q ./$executeble > /dev/null 2>&1
 Threads=$?
 if[Memory -eq 0]; then
 if[Threads -eq 0]; then
