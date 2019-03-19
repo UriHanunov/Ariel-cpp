@@ -12,25 +12,25 @@ if [secssesfillMake -gt 0]
 	exit 7
 	
 	else
-	valgrind --tool=memcheck --leak-check=full --error-exitcode=3 -q ./$executeble >  /dev/null 2>&1
-	Memory=$?
-	if [Memory -gt 0] 
-		then
-		MEMO=FAIL
-		else
-		MEMO=PASS
-	fi
+		valgrind --tool=memcheck --leak-check=full --error-exitcode=3 -q ./$executeble >  /dev/null 2>&1
+		Memory=$?
+		if [Memory -gt 0] 
+			then
+			MEMO=FAIL
+			else
+			MEMO=PASS
+		fi
 
-	valgrind --tool=helgrind --error-exitcode=3 -q ./$executeble > /dev/null 2>&1
-	Threads=$?
-	if [Threads -gt 0] 
-		then
-		THRED=FAIL
-		else
-		THRED=PASS
-	fi	
-	
-	echo  Compilation      Memory leaks    thread race
-			PASS             $MEMO            $THRED
+		valgrind --tool=helgrind --error-exitcode=3 -q ./$executeble > /dev/null 2>&1
+		Threads=$?
+		if [Threads -gt 0] 
+			then
+			THRED=FAIL
+			else
+			THRED=PASS
+		fi	
 
 fi
+echo  Compilation      Memory leaks    thread race
+				PASS             $MEMO            $THRED
+exit 0
