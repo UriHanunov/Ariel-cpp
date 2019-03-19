@@ -19,19 +19,19 @@ Threads=$?
 
 if [[ Memory -gt 0 ]]; then
 	exitCode=2
-	MEMO=FAIL
+	MEMORY=FAIL
 else
-	MEMO=PASS
+	MEMORY=PASS
 fi
 
 if [[ Threads -gt 0 ]]; then
 	exitCode=$((exitCode + 1))
-	THRED=FAIL
+	THREAD=FAIL
 else
-	THRED=PASS
+	THREAD=PASS
 fi
 
 
 echo  	Compilation      Memory leaks    thread race
-echo	PASS             $MEMO            $THRED
+echo	PASS             $MEMORY            $THREAD
 exit $exitCode
