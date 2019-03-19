@@ -2,13 +2,15 @@
 foldername=$1
 executeble=$2
 exitCode=0
+MEMO
+THRED
 
 cd $foldername
 make
 secssesfillMake=$?
-if [[secssesfillMake -gt 0]]; then
+if [[$secssesfillMake -gt 0]]; then
 	echo  	Compilation     Memory leaks      thread race
-		   FAIL            FAIL              FAIL
+				FAIL            FAIL              FAIL
 	exit 7
 fi
 	
@@ -16,14 +18,14 @@ valgrind --leak-check=full --error-exitcode=1 ./$2 &> temp.txt
 Memory=$?
 valgrind --tool=helgrind --error-exitcode=1 ./$2 &> temp.txt
 Threads=$?
-if [[Memory -ne 0]]; then
+if [[$Memory -gt 0]]; then
 	exitCode=2
 fi
-if[[Threads -ne 0]]; then
+if[[$Threads -gt 0]]; then
 	exitCode=$exitCode+1
 fi
 
 
 echo  Compilation      Memory leaks    thread race
-	PASS             $MEMO            $THRED
+		PASS             $MEMO            $THRED
 exit $exitCode
