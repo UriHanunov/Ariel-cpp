@@ -7,9 +7,10 @@ make
 secssesfillMake=$?
 if [secssesfillMake -ne 0]
 	then
-	echo  Compilation     Memory leaks      thread race
-			FAIL            FAIL              FAIL
+	echo  	Compilation     Memory leaks      thread race
+		   FAIL            FAIL              FAIL
 	exit 7
+fi
 	
 valgrind --tool=memcheck --leak-check=full --error-exitcode=3 -q ./$executeble >  /dev/null 2>&1
 Memory=$?
@@ -27,5 +28,5 @@ fi
 
 
 echo  Compilation      Memory leaks    thread race
-				PASS             $MEMO            $THRED
+	PASS             $MEMO            $THRED
 exit $exitCode
