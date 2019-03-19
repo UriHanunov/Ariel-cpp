@@ -6,14 +6,14 @@ curentLoctin=`pwd`
 cd $foldername
 make
 secssesfillMake=$?
-if[secssesfillMake != 0]; then
+if[secssesfillMake -gt 0]; then
 echo  Compilation     Memory leaks      thread race
          FAIL            FAIL              FAIL
 exit 7
 fi
-valgrind --leak-check=full --error-exitcode=1 ./$2 &> temp.txt
+valgrind --leak-check=full --error-exitcode=1 ./$executeble &> temp.txt
 Memory=$?
-valgrind --tool=helgrind --error-exitcode=1 ./$2 &> temp.txt
+valgrind --tool=helgrind --error-exitcode=1 ./$executeble &> temp.txt
 Threads=$?
 if[Memory -eq 0]; then
 if[Threads -eq 0]; then
