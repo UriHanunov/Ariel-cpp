@@ -25,7 +25,7 @@ else
 fi
 
 if [[ Threads -gt 0 ]]; then
-	exitCode=$exitCode + 1
+	exitCode=$((exitCode + 1))
 	THRED=FAIL
 else
 	THRED=PASS
