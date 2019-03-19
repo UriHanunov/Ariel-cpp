@@ -25,7 +25,7 @@ if [[ Memory -gt 0 ]]; then
 fi
 
 if [[ Threads -gt 0 ]]; then
-	exitCode=$exitCode+1
+	exitCode=($exitCode+1)
 	THRED=FAIL
 fi
 
