@@ -14,20 +14,20 @@ if [secssesfillMake -gt 0]
 	else
 		valgrind --tool=memcheck --leak-check=full --error-exitcode=3 -q ./$executeble >  /dev/null 2>&1
 		Memory=$?
-		if [Memory -gt 0] 
+		if [Memory -eq 0] 
 			then
-			MEMO=FAIL
-			else
 			MEMO=PASS
+			else
+			MEMO=FAIL
 		fi
 
 		valgrind --tool=helgrind --error-exitcode=3 -q ./$executeble > /dev/null 2>&1
 		Threads=$?
-		if [Threads -gt 0] 
+		if [Threads -eq 0] 
 			then
-			THRED=FAIL
-			else
 			THRED=PASS
+			else
+			THRED=FAIL
 		fi	
 
 fi
